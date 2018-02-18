@@ -15,6 +15,10 @@ namespace GenerikusOsztaly
             Console.WriteLine(p.ToString());
             p.Def();
             Console.WriteLine(p.ToString());
+            Console.WriteLine("--------------------------------------------------------");
+            SzinesPont<int> szinespont = new SzinesPont<int>(10, 5, "Barna");
+            EgeszSzinesPont egeszSzines = new EgeszSzinesPont(0, 0, "Szürke");
+            p = szinespont as Pont<int>;
             Console.ReadKey();
         }
 
@@ -53,7 +57,20 @@ namespace GenerikusOsztaly
             this.x = default(T);
             this.y = default(T);
         }
+      /*  public T GetDistanceFromOrigin()
+        {
+            return Math.Sqrt(Math.Pow(MyX, 2) + Math.Pow(MyY, 2)); 
+        }
+        KORLÁT, OPERÁTOR FELÜLÍRÁSAVAL |FIX|*/
 
 
+    }
+    internal class SzinesPont<T> : Pont<T> where T : struct
+    {
+        public string MySzin { get; set; }
+        public SzinesPont(T x, T y, string szin) : base(x, y)
+        {
+            this.MySzin = szin;
+        }
     }
 }
